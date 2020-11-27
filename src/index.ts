@@ -1,13 +1,23 @@
-export * from 'callbag';
+export { Callbag, Source, Sink, DATA, START, END } from 'callbag';
 
-export { default as map } from 'callbag-map';
-export { default as filter } from 'callbag-filter';
-export { default as expr } from 'callbag-expr';
-export { default as merge } from 'callbag-merge';
-export { default as combine } from 'callbag-combine';
-export { default as subscribe } from 'callbag-subscribe';
-export { default as fromPromise } from 'callbag-from-promise';
-export { default as fromEvent } from 'callbag-from-event';
+import pipe from 'callbag-pipe';
+import map from 'callbag-map';
+import filter from 'callbag-filter';
+import interval from 'callbag-interval';
+import flatten from 'callbag-flatten';
+import merge from 'callbag-merge';
+import combine from 'callbag-combine';
+import subscribe from 'callbag-subscribe';
+import fromPromise from 'callbag-from-promise';
+import fromEvent from 'callbag-from-event';
+import of from 'callbag-of';
 
-export { tap } from './tap';
+import { debounce } from 'callbag-debounce';
+import { expr } from 'callbag-expr';
+
+import { tap } from './tap';
+
+export {
+  pipe, map, filter, interval, merge, combine, flatten, subscribe, fromPromise, fromEvent, of, debounce, expr, tap
+};
 
