@@ -1,0 +1,111 @@
+{
+  "init": [
+    {
+      "name": "initJssCs",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/transport/setup-jss.js",
+      "hash": "mKMEnUYmR3uQgW8qs7iCrg=="
+    },
+    {
+      "name": "installTheme",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/content/theme.ts",
+      "hash": "6U/3HU9yHpYGc9hCWa29Lw=="
+    },
+    {
+      "name": "codeSelection",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/code/selection.js",
+      "hash": "rpcMkC1Hg2CSKRMyGBhe3A=="
+    },
+    {
+      "name": "sameLineLengthInCodes",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/code/same-line-length.js",
+      "hash": "/vWXHcAyITVxfqjrMiPxKg=="
+    },
+    {
+      "name": "initHintBox",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/code/line-hint/index.js",
+      "hash": "IAnecRuFCm5TqjPvdLiGIg=="
+    },
+    {
+      "name": "initCodeLineRef",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/code/line-ref/index.js",
+      "hash": "IEskGb3vfEynmcBC/7DVew=="
+    },
+    {
+      "name": "initSmartCopy",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/code/smart-copy.js",
+      "hash": "i4b8w/mPhLwTs3RwcWVzJA=="
+    },
+    {
+      "name": "copyHeadings",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/heading/copy-headings.js",
+      "hash": "sFEPZSmfznunTtqlq6mZIw=="
+    },
+    {
+      "name": "contentNavHighlight",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/page/contentnav/highlight.js",
+      "hash": "KMYOxU22VO76uG23bCV2ww=="
+    },
+    {
+      "name": "loadDeferredIFrames",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/transport/deferred-iframe.js",
+      "hash": "jrcsOzvUf+OaURiaaSRtIA=="
+    },
+    {
+      "name": "smoothLoading",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/transport/smooth-loading.js",
+      "hash": "W+38NNnt4aXnzIf4AwnjYA=="
+    },
+    {
+      "name": "tocHighlight",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/page/toc/toc-highlight.js",
+      "hash": "eq9ydGmzagr4st2rDoXbVA=="
+    },
+    {
+      "name": "postNavSearch",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/page/toc/search/post-nav/index.js",
+      "hash": "m8W/WMgsQrDvul/yWCFCnw=="
+    },
+    {
+      "name": "copyLineLinks",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/code/line-links/copy-line-link.js",
+      "hash": "mahZc7VKxZXDN/sO/N1spg=="
+    },
+    {
+      "name": "gatherFootnotes",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/footnote/gather-footnotes.js",
+      "hash": "AVGhdiGYiBtgvtFvkonhuA=="
+    }
+  ],
+  "components": [
+    {
+      "name": "GithubSearch",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/misc/github/search.js",
+      "hash": "VKwXsPw9gVroCCTbUKBN2A=="
+    },
+    {
+      "name": "ToCToggle",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/page/toc/toggle/index.js",
+      "hash": "U+xy58ASrIv/5qFaqBmbZA=="
+    },
+    {
+      "name": "DarkModeSwitch",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/darkmode/index.js",
+      "hash": "p6XsCiWkW1V5+S+73eMYiw=="
+    },
+    {
+      "name": "ConfigTransport",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/transport/config.js",
+      "hash": "KUiOhI0swS+VgH5+BMkc6A=="
+    },
+    {
+      "name": "ToCPrevNext",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/page/toc/prevnext/index.js",
+      "hash": "QNEi1myY7ETJETGIjELVxw=="
+    }
+  ],
+  "renderer": {
+    "name": "getRenderer",
+    "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/transport/renderer.js",
+    "hash": "DieiUSsC7Wlzve5As5vDvA=="
+  }
+}
