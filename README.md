@@ -1,6 +1,6 @@
 # callbag-common
 
-Commonly used [callbags](https://github.com/callbag/callbag).
+Commonly used [callbag utilities](https://github.com/callbag/callbag).
 
 ```bash
 npm i callbag-common
