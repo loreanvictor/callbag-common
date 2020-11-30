@@ -78,6 +78,11 @@
   ],
   "components": [
     {
+      "name": "ToCPrevNext",
+      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/page/toc/prevnext/index.js",
+      "hash": "QNEi1myY7ETJETGIjELVxw=="
+    },
+    {
       "name": "GithubSearch",
       "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/misc/github/search.js",
       "hash": "VKwXsPw9gVroCCTbUKBN2A=="
@@ -96,11 +101,6 @@
       "name": "ConfigTransport",
       "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/transport/config.js",
       "hash": "KUiOhI0swS+VgH5+BMkc6A=="
-    },
-    {
-      "name": "ToCPrevNext",
-      "filename": "/home/runner/work/callbag-common/callbag-common/.codedoc/node_modules/@codedoc/core/dist/es6/components/page/toc/prevnext/index.js",
-      "hash": "QNEi1myY7ETJETGIjELVxw=="
     }
   ],
   "renderer": {
