@@ -76,8 +76,8 @@ In this case our simplistic callback (or the communication scheme) will be rathe
 
 <br>
 
-None of these are available under our previous communication scheme. This is the expanded communication scheme we want
-for streams:
+None of these are available under our previous communication scheme, and we need an expanded communication scheme to be able to work
+properly with streams:
 
 ```bash | --no-term
 => [GREETING] "Give me data whenever you have some"                              # --> us to source
