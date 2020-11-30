@@ -13,7 +13,7 @@ function tap<T>(do: (t: T) => void): (src: Source<T>) => Source<T>
 ```ts | --term ​
 import { tap, interval, map, subscribe, pipe, filter } from 'callbag-common';
 
-const cleanup = pipe(
+pipe(
   interval(1000),
   tap(v => console.log('Before: ' + v)),
   map(x => x * 3),
