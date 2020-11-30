@@ -2,7 +2,6 @@
   <img src="/callbag.svg" width="156"/>
   <br><br>
   <h1>callbag-common</h1>
-  <br><br>
 </div>
 
 Commonly used [callbag utilities](https://github.com/callbag/callbag).
@@ -12,7 +11,9 @@ npm i callbag-common
 ```
 👉 [Read the docs](https://loreanvictor.github.io/callbag-common/)
 
-Included callbags:
+<br>
+
+## Included Utilities
 
 - `pipe()`
 - `of()`
