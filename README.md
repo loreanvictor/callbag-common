@@ -1,10 +1,16 @@
-# callbag-common
+<div align="center">
+  <img src="/callbag.svg" width="156"/>
+  <br><br>
+  <h1>callbag-common</h1>
+  <br><br>
+</div>
 
 Commonly used [callbag utilities](https://github.com/callbag/callbag).
 
 ```bash
 npm i callbag-common
 ```
+👉 [Read the docs](https://loreanvictor.github.io/callbag-common/)
 
 Included callbags:
 
@@ -43,4 +49,4 @@ _eventually decentralized_ and _always available_ (everything working in target 
 
 <br>
 
-👉 TODO: add usage docs / examples for all included callbags. Generally this repo can be a nice _starter pack_ for callbags.
+👉 **TODO**: complete usage docs with examples for each included module, add recipes for common use cases.
