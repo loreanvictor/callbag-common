@@ -5,7 +5,7 @@
 </div>
 
 A collection of commonly used utilities for creating / working with reactive streams or iterables.
-Included utilities follow with the [callbag specification](https://github.com/callbag/callbag).
+Included utilities follow the [callbag specification](https://github.com/callbag/callbag).
 ```bash
 npm i callbag-common
 ```
