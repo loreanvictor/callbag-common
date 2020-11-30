@@ -13,7 +13,7 @@ npm i callbag-common
 
 <br>
 
-👉 If you do not know what reactive streams or what callbags are, [read this post first](./what-are-callbags).
+👉 If you do not know what reactive streams or callbags are, [read this post first](./what-are-callbags).
 
 <br>
 
