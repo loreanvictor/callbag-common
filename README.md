@@ -12,7 +12,7 @@ npm i callbag-common
 
 👉 [Read the docs](https://loreanvictor.github.io/callbag-common/)
 
-👉 If you do not know what reactive streams or what callbags are,
+👉 If you do not know what reactive streams or callbags are,
   [read this post first](https://loreanvictor.github.io/callbag-common/what-are-callbags).
 
 <br>
