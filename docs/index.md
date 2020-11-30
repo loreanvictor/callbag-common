@@ -1,19 +1,29 @@
-# 🎒 callbag-common
+<div align="center">
+  <img src="/callbag.svg" width="156"/>
+  <br><br>
+  <h1>callbag-common</h1>
+  <br><br>
+</div>
 
-A collection of commonly used reactive utilities that comply with the [callbag specification](https://github.com/callbag/callbag).
+A collection of commonly used utilities for creating / working with reactive streams or iterables.
+Included tools comply with the [callbag specification](https://github.com/callbag/callbag).
 ```bash
 npm i callbag-common
 ```
 
 <br>
 
-👉 If you do not know what reactive stream programming is or what callbags are, [read this post first](/what-are-callbags).
+👉 If you do not know what reactive streams or what callbags are, [read this post first](/what-are-callbags).
+
+<br>
 
 ---
 
+<br>
+
 ## Example Usage
 
-**STEP 1**: create a source using a [source factory](#source-factories):
+Create a source using a [source factory](#source-factories):
 
 ```ts
 import { interval } from 'callbag-common';
@@ -23,7 +33,7 @@ const source = interval(1000) // --> emit every second
 
 <br>
 
-**STEP 2**: transform your sources by [piping](/util/pipe) them into some [operators](#operators):
+Transform your sources by [piping](/util/pipe) them into some [operators](#operators):
 ```ts
 import { pipe, interval, map, filter } from 'callbag-common';
 
@@ -37,7 +47,7 @@ pipe(
 
 <br>
 
-**STEP 3**: [subscribe](/util/subscribe) to your transformed source:
+[Subscribe](/util/subscribe) to your transformed source:
 ```ts | --term ​
 import { interval, pipe, map, filter, subscribe } from 'callbag-common'
 
@@ -58,7 +68,11 @@ pipe(
 
 [► Try It!](https://stackblitz.com/edit/callbag-common)
 
+<br>
+
 ---
+
+<br>
 
 ## Included Utilities
 
@@ -88,7 +102,11 @@ pipe(
 - [subscribe](/util/subscribe): Subscribes to given callbag.
 - [tap](/util/tap): Taps into given callbag (without subscribing).
 
+<br>
+
 ---
+
+<br>
 
 ## Why Callbags?
 
@@ -99,20 +117,22 @@ pipe(
 
 👉 [Read more](https://staltz.com/why-we-need-callbags.html)
 
+<br>
+
 ---
+
+<br>
 
 ## Why a Collection?
 
 A key aspect of callbag spec is its simplicity, which makes tools and utilities built around it
-[pretty simple as well](https://github.com/callbag/callbag/blob/master/getting-started.md).
-Maintaining each of these tools independently is much easier and results in overal faster iteration
-and higher quality of the whole ecosystem.
+[pretty simple as well](https://github.com/callbag/callbag/blob/master/getting-started.md), leading
+to a an iterative and high-quality decentralized eco-system of community-maintained tools.
 
-However discovering and using necessary tools becomes more difficult. The
+The down-side of such an eco-system is that discovering and using necessary libraries becomes more difficult. The
 [callbag wiki](https://github.com/callbag/callbag/wiki) acts as a good reference, but
-it can be daunting for new-comers to go through it and find what they need.
-
-Additionally, importing from multiple libraries reduces code readability:
+it can be daunting for new-comers to go through it and find what they need. Besides, importing from
+multiple libraries becomes more inconvenient, specifically with incosistent export conventions:
 
 ```ts
 import pipe from 'callbag-pipe'
@@ -120,18 +140,24 @@ import subscribe from 'callbag-subscribe';
 import map from 'callbag-map';
 import filter from 'callbag-filter';
 import flatten from 'callbag-flatten';
+import { debounce } from 'callbag-debounce';
+import { expr } from 'callbag-expr';
 ```
 
 <br>
 
-With a collection solves these issues, as discovery of basic utilities (or utilities for a specific
+A collection solves these issues, as discovery of basic utilities (or utilities for a specific
 purpose) is already done by collection maintainers and imports become much easier as well:
 
 ```ts
 import { pipe, subscribe, map, filter, flatten } from 'callbag-common';
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Why this Collection?
 
@@ -145,6 +171,10 @@ Additionally, it specifically targets TypeScript / ES6, and only includes callba
 commonly used in real-life projects. This means while it gets all the benefits of a decentralized eco-system,
 it also always guarantees functionality and type safety.
 
+<br>
+
 ---
+
+<br>
 
 > :ToCPrevNext

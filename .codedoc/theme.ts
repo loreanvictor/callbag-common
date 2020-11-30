@@ -8,28 +8,29 @@ export const theme = /*#__PURE__*/createTheme({
   },
   dark: {
     primary: '#40a8c4',
-    background: '#111111',
+    background: '#1D2D50',
   },
   quote: {
     light: {
       background: '#eaf2ea',
     },
     dark: {
-      background: '#161616',
+      background: '#182448',
+      border: '#133b5c',
     }
   },
   toc: {
     dark: {
-      background: '#161616',
+      background: '#182448',
     },
     light: {
-      background: '#eaf4f1',
+      background: '#eaf2ea',
     }
   },
   code: {
     wmbar: false,
     dark: {
-      shadow: '0px 1px 3px #000000',
+      shadow: '0px 1px 3px #102030',
       background: 'none',
     },
     light: {

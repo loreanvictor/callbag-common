@@ -18,6 +18,7 @@ jobs:
           npm install @codedoc/cli
           # build repo
           (PATH=$(npm bin):$PATH && codedoc build)
+          cp ./callbag.svg dist/
           # mark no jekyll
           touch dist/.nojekyll
         env:

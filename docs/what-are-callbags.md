@@ -1,199 +1,239 @@
-# What Are Callbags?
+<div align="center">
+  <img src="/callbag.svg" width="156"/>
+  <br><br>
+  <h1>What are callbags?</h1>
+  <br><br>
+</div>
 
+**TLDR**, A _callback_ is a function we pass to another, _source_ function, in order to give the _source_ function
+a way to talk back to us (call us back). [Callbag](https://github.com/callbag/callbag) is a standard
+for callbacks that enables working with streams. A _callbag_ is any callback that follows that standard.
+
+<br>
+
+---
+
+<br>
+
+## Callbacks
 
 Take this code:
 
 ```ts
-console.log(funcA(...));
-console.log(funcB(...));
+console.log(source());
 ```
 
-What happens here? First `funcA()` is called and the result it produces is logged, then
-`funcB()` is called and the result it produces is logged.
+When we run this code:
+
+1. `source()` is called. We wait for its output.
+2. We log the output from `source()`.
+
 
 <br>
 
-What if `funcA()` takes a long time to produce its result? Well instead of waiting
-for `funcA()` to finish and then calling `funcB()`, we could tell `funcA()` to take as
-long as it takes, but _call us back_ when it has produced its result, and tend to `funcB()`
-in the meanwhile. I.e.:
+What if `source()` takes some time to produce data? Instead of waiting for it,
+we could tell it to "give us data" (by calling it), and give it a way to call us back
+when it has some data:
 
 ```ts
-funcA(..., (result) => console.log(result));
-console.log(funcB());
+source(data => console.log(data));
 ```
 
 <br>
 
-Now what if `funcA()` encounters an error while it is trying to produce its result? Well,
-the convention is that the _callback_ we provide takes two arguments, and `funcA()` will
-send errors on the first and data on the second:
+Here, `data => console.log(data)` is a _callback_, as its the method we provide
+`source()` to call us back when it has data. `source` is basically a _source_ of data, and we can communicate
+with it as follows:
 
-```ts
-funcA(..., (err, result) => {
-  if (err) { /* --> handle error */ }
-  else console.log(result);
-});
-console.log(funcB());
+```bash | --no-term
+=> [GREETING] "Give me data when you have it" # --> us to source
+<= [DATA]     "Here is some data"             # --> source to us
 ```
+
+<br>
 
 ---
+
+<br>
 
 ## Streams
 
-Now what if `funcA()` produces not one, but multiple results? For example, it might be a function
-who is supposed to calculate the position of the mouse cursor on the X-axis, or it might be
-the function who calculates the length of some live user input.
+Now what if our source (e.g. `source()`)
+produces an indeterminate number of data entries? For example, our source might be
+a function responsible for calculating the position of the cursor on X-axis, or it might be a function who is supposed
+to give us messages coming from a web-socket.
 
-> 👉 We call a function that might produce an indeterminate number of _results_, at indeterminate
-points in time, a _stream_.
-
-<br>
-
-Well the classic callback spec is too limiting for that purpose, as a stream would need to say a few more
-things than just "Here is the data" or "I failed":
-
->
-> 💬 `"I will give you data when I have some. Tell me when you don't want anymore"`.
->
-> 💬 `"Here is some more data."`
->
-> 💬 `"I am going to stop sending more data because of X."`
->
+> 👉 A source that produces an indeterminate number of data entries at indeterminate time intervals
+>   is called a _stream_.
 
 <br>
 
-With the classic callback spec, you are also more limited in your communication with the function / producer / data-source,
-as you can only say "I want data" by calling it. With a stream, however, you would also need more options:
+In this case our simplistic callback (or the communication scheme) will be rather limiting:
+- We might want to tell the source to stop sending more data.
+- The source might want to tell us that it won't send more data (maybe due to some error).
+- Some sources push data whenever possible. Others might wait for us to ask them explicitly for more data, in which
+  case we would need to be able to ask for more data as well.
 
->
-> 🗨️ `"Give me data when you got some."`
->
-> 🗨️ `"Give me more data."`
->
-> 🗨️ `"Stop giving data."`
->
+<br>
+
+None of these are available under our previous communication scheme. This is the expanded communication scheme we want
+for streams:
+
+```bash | --no-term
+=> [GREETING] "Give me data whenever you have some"                              # --> us to source
+<= [GREETING] "I will give you data whenever I have some. Tell me when to stop"  # --> source to us
+
+<= [DATA]     "Here is some data"                                                # --> source to us
+=> [DATA]     "Give me more data"                                                # --> us to source, when it needs to be pulled
+
+=> [END]      "Stop sending more data"                                           # --> us to source
+<= [END]      "I won't be sending more data (because of X)"                      # --> source to us
+```
+
+<br>
+
+To accomodate it we can have our callback accept two arguments instead of one:
+The first argument denoting the type of the message, the second one denoting the content (or payload):
+
+```ts
+source((type, payload) => {
+  if (type === GREET) console.log('Listening ...');
+  if (type === DATA) console.log(payload);
+  if (type === END) console.log('Source ended!');
+});
+```
+
+<br>
 
 ---
 
-## Callbags
-
-We can group different messages that we want to send to / receive from streams like this:
-
-
-> **GREETING** \
-> 🗨️ `"Give me data when you got some."` \
-> 💬 `"I will give you data when I have some. Tell me when you don't want anymore"`.
-
-> **DATA** \
-> 💬 `"Here is some more data."` \
-> 🗨️ `"Give me more data."`
-
-> **END** \
-> 💬 `"I am going to stop sending more data because of X."` / \
-> 🗨️ `"Stop giving data."`
-
 <br>
 
-Based on this, when we have a source stream, we need to be able to greet it, ask more data from it (perhaps optional
-based on what kind of source it is), or end it.
-When greeting it, we need to provide it a way to talk back to us, using which it can greet us, give us data,
-or tell us when it is going to stop.
+## Callbags
 
-We can model either direction of that communication with a function with two arguments:
-- One to specify the type of the message (**GREETING**, **DATA**, **END**)
-- One to specify the content of the message:
-  - A function for talking back, in case of **GREETING**
-  - The data being sent by the source, in case of **DATA** (can be empty when requesting data)
-  - The reason for termination, in case of **END** (can be empty if no particular reason)
-
-i.e.
+Callbag is just a term to denote any callback (or function) that looks like
+the callback we just designed for talking with `source()`. In other words, any function with the following
+signature is a callbag:
 
 ```ts
 (type: GREET | DATA | END, payload?: any) => void;
 ```
 
-> 👉 This spec for callbacks is basically called the [callbag specification](https://www.google.com/search?client=safari&rls=en&q=callbag-foreach&ie=UTF-8&oe=UTF-8). In other words, any function like that is a callbag.
+> 👉 In the [callbag spec](https://github.com/callbag/callbag), message types are denoted
+> by numbers:
+> - `0` stands for `GREET` (also called `START`)
+> - `1` stands for `DATA`
+> - `2` stands for `END`.
 
 <br>
 
-Using this spec, if our `funcA()` is a stream, we provide it with a callbag instead of a classic callback:
+Now lets look at the above example again:
 
 ```ts
-funcA(GREET, (type, payload) => {
+source((type, payload) => {
+  if (type === GREET) console.log('Listening ...');
   if (type === DATA) console.log(payload);
-  else { /* --> funcA() is finished, handle errors if necessary */ }
-});
-```
-
-> 👉 In the callbag spec, message type is represented by numbers:
-> - `0` means **GREET**
-> - `1` means **DATA**
-> - `2` means **END**
->
-> So the actual type definition for a callbag is like this:
-> ```ts
-> (type: 0 | 1 | 2, payload?: any) => void;
-> ```
-
----
-
-## Talking Back
-
-Now what if we want to only receive 5 data points from `funcA()`, and end it afterwards? Well according to
-the spec we outlined, for every greeting message a way for talking back should be provided: another callbag.
-We can use that _talkback_ to stop the source after we've got 5 data entries:
-
-```ts
-funcA(GREET, (type, payload) => {
-  let talkback;
-  let N = 0;
-
-  if (type === GREET) talkback = payload; // --> GREET message, payload is a callbag that allows us to talk back to the source
-  else if (type === DATA) {
-    console.log(payload);
-    N++;
-    if (N >= 5) talkback(END);            // --> We've got 5 data entries, ask the source to end.
-  }
+  if (type === END) console.log('Source ended!');
 });
 ```
 
 <br>
 
-> 👉 In the examples so far, we have assumed that the source (`funcA()`) will give us data
-> whenever it has some, without us requesting it. Sources like that are called _listenable_.
-> If we need to ask a source for more data, i.e. we need to _pull_ data from it, we call
-> the source _pullable_.
+Here, `source` is NOT a callbag, since it only accepts one argument. We can _fix_ that by making `source` accept two
+arguments as well, in which case our code would change like this:
+
+```ts
+source(GREET, (type, payload) => {
+  if (type === GREET) console.log('Listeing ...');
+  if (type === DATA) console.log(payload);
+  if (type === END) console.log('Source ended!');
+});
+```
 
 <br>
 
-Now what if `funcA()` is actually not a _listenable_ source but a _pullable_ source? Well,
-we would need to modify our code and use the talkback to also request data whenever we get some:
+Now what if we want to receive a limited number of data entries (say 5) from `source`?
+We greeted `source` by calling it with `GREET` alongside a callbag. According to our communication scheme,
+`source` needs to also greet us by sending us `GREET` alongside _a way to tell it to stop_, i.e. another callbag:
 
 ```ts
-funcA(GREET, (type, payload) => {
-  let talkback;
-  let N = 0;
+let talkback;
+let N = 0;
 
+source(GREET, (type, payload) => {
   if (type === GREET) {
-    talkback = payload;                   // --> GREET message, payload is a callbag that allows us to talk back to the source
-    talkback(DATA);                       // --> pull data
+    talkback = payload;                // --> when type is GREET, payload is a callbag
+    console.log('Listening ...');
   }
-  else if (type === DATA) {
-    console.log(payload);
+
+  if (type === DATA) {
+    console.log(payload);             // --> when type is DATA, payload is the data sent by source
     N++;
-    if (N >= 5) talkback(END);            // --> We've got 5 data entries, ask the source to end.
-    else talkback(DATA);                  // --> request more data
+    if (N >= 5) talkback(END);        // --> telling the source to stop
   }
+
+  if (type === END) console.log('Source ended!');
 });
 ```
 
+> 👉 So whenever someone greets someone (us greeting the source, the source greeting us), the payload
+> should be another callbag, acting as a way to talk back to the greeter. In this example,
+> `talkback` plays that role.
+
+<br>
+
 ---
+
+<br>
+
+## Callbag Sources
+
+So far we've just worked with `source()` as a stream, without looking inside it. But how would a callbag source
+actually look like? To see that, lets build a simple callbag source that outputs an increasing number every second:
+
+```ts
+const source = (type, payload) => {
+  if (type === GREET) {                           // --> everything starts with a GREET
+    let talkback = payload;                       // --> when greeted, the payload is a way to talk back to the greeter
+    let i = 0;
+
+    setInterval(() => talkback(DATA, i++), 1000); // --> lets tell the greeter about our increasing number every second
+  }
+}
+```
+
+<br>
+
+☝️ Here, we are not giving the caller any method of telling the source to stop sending more data. This is because
+we are not following the communication protocol properly: the source MUST greet back and provide a way of talking back (i.e. another callbg):
+
+```ts
+const source = (type, payload) => {
+  if (type === GREET) {
+    let talkback = payload;
+    let i = 0;
+
+    const interval = setInterval(() => talkback(DATA, i++), 1000);
+
+    talkback(GREET, (_type, _payload) => {
+      if (_type === END) clearInterval(interval);
+    });
+  }
+}
+```
+
+[► Try It!](https://stackblitz.com/edit/callbag-concept?file=index.ts)
+
+<br>
+
+---
+
+<br>
 
 ## Callbags in Practice
 
 In practice, you rarely need to greet sources or handle talkbacks manually. Utilities
-such as those provided in callbag-common take care of all of that message passing for you:
+such as those provided in [callbag-common](/) take care of that for you:
 
 ```ts | --term ​
 import { interval, pipe, map, filter, subscribe } from 'callbag-common'
@@ -217,8 +257,72 @@ pipe(
 
 <br>
 
-👉 [Read more](/callbags-in-practice) usage of callbags in practice.
+The workflow is typically like this:
+
+👉 You create some callbag sources, using [source factories](/#source-factories):
+
+```ts
+import { interval } from 'callbag-common';
+
+const source = interval(1000);
+```
+
+<br>
+
+👉 You then transform these sources using [operators](/#operators). \
+For example,
+you might want to multiply each received number by `3`:
+
+```ts
+import { interval, map } from 'callbag-common';
+
+let source = interval(1000);
+source = map(n => n * 3)(source);
+```
+
+Or you might want to only pick odd numbers:
+
+```ts
+import { interval, map, filter } from 'callbag-common';
+
+let source = interval(1000);
+source = map(n => n * 3)(source);
+source = filter(n => n % 2)(source);
+```
+
+<br>
+
+👉 Finally, you start listening to your transformed source by subscribing to it:
+
+```ts
+import { interval, map, filter, subscribe } from 'callbag-common';
+
+let source = interval(1000);
+source = map(n => n * 3)(source);
+source = filter(n => n % 2)(source);
+
+subscribe(console.log)(source);
+```
+
+<br>
+
+> 👉 It is also highly recommended to use the `pipe()` utility for transforming your sources and subscribing to them,
+> as it makes the code much easier to read:
+> ```ts
+> import { interval, map, filter, subscribe, pipe } from 'callbag-common';
+>
+> pipe(
+>   interval(1000),
+>   map(n => n * 3),
+>   filter(n => n % 2),
+>   subscribe(console.log)
+> )
+> ```
+
+<br>
 
 ---
+
+<br>
 
 > :ToCPrevNext

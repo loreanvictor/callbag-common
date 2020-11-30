@@ -18,7 +18,12 @@ export const config = /*#__PURE__*/configuration({
   },
   page: {
     title: {
-      base: 'callbag-common'
+      extractor: (content) => {
+        const base = 'callbag-common';
+        const pt = content.querySelector('h1')?.textContent;
+
+        return pt ? `${base} | ${pt}` : base;
+      }
     },
     fonts: {
       text: {
