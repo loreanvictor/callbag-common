@@ -222,7 +222,8 @@ const source = (type, payload) => {
 }
 ```
 
-[► Try It!](https://stackblitz.com/edit/callbag-concept?file=index.ts)
+> :Buttons
+> > :Button label=► Try It!, url=https://stackblitz.com/edit/callbag-concept?file=index.ts
 
 <br>
 
@@ -253,7 +254,8 @@ pipe(
 > 27
 ```
 
-[► Try It!](https://stackblitz.com/edit/callbag-common)
+> :Buttons
+> > :Button label=► Try It!, url=(https://stackblitz.com/edit/callbag-common
 
 <br>
 
@@ -322,7 +324,5 @@ subscribe(console.log)(source);
 <br>
 
 ---
-
-<br>
 
 > :ToCPrevNext

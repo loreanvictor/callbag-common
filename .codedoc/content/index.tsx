@@ -31,6 +31,7 @@ export function content(_content: HTMLElement, toc: HTMLElement, renderer: Rende
                   /> : false
             }>{toc}</ToC>
           }>
+      <style>{`iframe { background: none; }`}</style>
       {_content}
       <ContentNav content={_content}/>
     </Page>
