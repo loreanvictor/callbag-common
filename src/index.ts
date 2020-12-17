@@ -11,6 +11,7 @@ import subscribe from 'callbag-subscribe';
 import fromPromise from 'callbag-from-promise';
 import fromEvent from 'callbag-from-event';
 import of from 'callbag-of';
+import take from 'callbag-take';
 
 import { debounce } from 'callbag-debounce';
 import { expr } from 'callbag-expr';
@@ -18,6 +19,9 @@ import { expr } from 'callbag-expr';
 import { tap } from './tap';
 
 export {
-  pipe, map, filter, interval, merge, combine, flatten, subscribe, fromPromise, fromEvent, of, debounce, expr, tap
+  of, fromPromise, fromEvent, interval,
+  map, filter, take, flatten, debounce,
+  merge, combine, expr,
+  pipe, tap, subscribe,
 };
 

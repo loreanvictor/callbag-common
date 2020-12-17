@@ -90,6 +90,7 @@ pipe(
 - [filter](/operator/filter): Filters incoming values.
 - [flatten](/operator/flatten): Flattens higher-order callbags.
 - [debounce](/operator/debounce): Debounces incoming values.
+- [take](/operator/take): Take a maximum number of values from source.
 
 ### Comination
 

@@ -16,6 +16,7 @@
 > [filter](/operator/filter)
 > [flatten](/operator/flatten)
 > [debounce](/operator/debounce)
+> [take](/operator/take)
 
 
 > :Collapse label=Combination

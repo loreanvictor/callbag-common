@@ -1,6 +1,6 @@
 {
   "name": "callbag-common",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "common callbags",
   "main": "dist/es5/index.js",
   "module": "dist/es6/index.js",
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/loreanvictor/callbag-common#readme",
   "dependencies": {
-    "callbag": "^1.3.0",
+    "callbag": "^1.4.0",
     "callbag-combine": "^1.2.0",
     "callbag-debounce": "^2.1.3",
     "callbag-expr": "^0.2.0",
@@ -42,7 +42,8 @@
     "callbag-merge": "^3.2.2",
     "callbag-of": "^2.0.0",
     "callbag-pipe": "^1.2.0",
-    "callbag-subscribe": "^1.5.1"
+    "callbag-subscribe": "^1.5.1",
+    "callbag-take": "^1.5.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",

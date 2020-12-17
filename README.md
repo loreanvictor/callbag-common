@@ -32,6 +32,7 @@ npm i callbag-common
 - [filter](https://loreanvictor.github.io/callbag-common/operator/filter): Filters incoming values.
 - [flatten](https://loreanvictor.github.io/callbag-common/operator/flatten): Flattens higher-order callbags.
 - [debounce](https://loreanvictor.github.io/callbag-common/operator/debounce): Debounces incoming values.
+- [take](https://loreanvictor.github.io/callbag-common/operator/take): Take a maximum number of values from source.
 
 ### Comination
 
