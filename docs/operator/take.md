@@ -35,7 +35,7 @@ pipe(
 👉 `take()` will _unsubscribe_ from its source after it has read its values,
 so using `take(1)` is a safe way of reading the next value of the source:
 
-```ts | --term
+```ts
 import { pipe, take, subscribe } from 'callbag-common';
 
 export function logNext(cb) {
