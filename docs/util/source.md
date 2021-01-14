@@ -40,6 +40,10 @@ pipe(
 > ...
 ```
 
+> :Buttons
+> > :Button label=► Try It!, url=https://stackblitz.com/edit/callbag-source
+
+
 <br>
 
 👉 Use `source()` when your functions want to handle arguments that might be a callbag source or might be a plain value.
