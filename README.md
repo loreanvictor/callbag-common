@@ -45,6 +45,7 @@ npm i callbag-common
 - [pipe](https://loreanvictor.github.io/callbag-common/util/pipe): Pipes sources to operators to sinks.
 - [subscribe](https://loreanvictor.github.io/callbag-common/util/subscribe): Subscribes to given callbag.
 - [tap](https://loreanvictor.github.io/callbag-common/util/tap): Taps into given callbag (without subscribing).
+- [source](https://loreanvictor.github.io/callbag-common/util/source): Converts non-callbags to callbag sources.
 
 <br>
 
