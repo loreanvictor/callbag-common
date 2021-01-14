@@ -1,4 +1,5 @@
 export { Callbag, Source, Sink, DATA, START, END } from 'callbag';
+export { MaybeSource } from './maybe';
 
 import pipe from 'callbag-pipe';
 import map from 'callbag-map';
@@ -17,11 +18,12 @@ import { debounce } from 'callbag-debounce';
 import { expr } from 'callbag-expr';
 
 import { tap } from './tap';
+import { source } from './maybe';
 
 export {
   of, fromPromise, fromEvent, interval,
   map, filter, take, flatten, debounce,
   merge, combine, expr,
-  pipe, tap, subscribe,
+  pipe, tap, subscribe, source,
 };
 

@@ -2,6 +2,7 @@
 
 import { should } from 'chai'; should();
 import { pipe, map, of, filter, subscribe, tap, take } from '../index';
+import { source } from '../maybe';
 
 
 describe('callbag-common', () => {
@@ -39,6 +40,24 @@ describe('callbag-common', () => {
       );
 
       r.should.eql([6, 12]);
+    });
+  });
+
+  describe('source()', () => {
+    it('should convert values to sources.', done => {
+      pipe(
+        source(42),
+        map(x => x * 3),
+        subscribe(v => {
+          v.should.equal(42 * 3);
+          done();
+        })
+      );
+    });
+
+    it('should keep sources as is.', () => {
+      const src = of(42);
+      source(src).should.equal(src);
     });
   });
 });
