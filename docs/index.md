@@ -103,6 +103,7 @@ pipe(
 - [pipe](/util/pipe): Pipes sources to operators to sinks.
 - [subscribe](/util/subscribe): Subscribes to given callbag.
 - [tap](/util/tap): Taps into given callbag (without subscribing).
+- [source](/util/source): Turns values to callbag sources, keeping callbags as is.
 
 <br>
 

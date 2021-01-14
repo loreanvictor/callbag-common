@@ -31,3 +31,4 @@
 > [pipe](/util/pipe)
 > [subscribe](/util/subscribe)
 > [tap](/util/tap)
+> [source](/util/source)
