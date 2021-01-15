@@ -1,6 +1,6 @@
 {
   "name": "callbag-common",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "common callbags",
   "main": "dist/es5/index.js",
   "module": "dist/es6/index.js",

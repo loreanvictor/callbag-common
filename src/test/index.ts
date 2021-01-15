@@ -59,5 +59,14 @@ describe('callbag-common', () => {
       const src = of(42);
       source(src).should.equal(src);
     });
+
+    it('should emit values to each new subscriber.', () => {
+      const r: number[] = [];
+      const s = source(42);
+      pipe(s, subscribe(v => r.push(v)));
+      pipe(s, subscribe(v => r.push(v)));
+
+      r.should.eql([42, 42]);
+    });
   });
 });
