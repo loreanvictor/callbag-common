@@ -20,10 +20,11 @@ import { expr } from 'callbag-expr';
 
 import { tap } from './tap';
 import { source } from './maybe';
+import { startWith } from './start-with';
 
 export {
   of, fromPromise, fromEvent, interval,
-  map, filter, take, flatten, debounce, scan,
+  map, filter, take, flatten, debounce, scan, startWith,
   merge, combine, expr,
   pipe, tap, subscribe, source,
 };

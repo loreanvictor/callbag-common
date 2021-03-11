@@ -1,8 +1,8 @@
 // tslint:disable: no-magic-numbers
 
 import { should } from 'chai'; should();
-import { pipe, map, of, filter, subscribe, tap, take, scan } from '../index';
-import { source } from '../maybe';
+import subject from 'callbag-subject';
+import { pipe, map, of, filter, subscribe, tap, source, take, scan, startWith } from '../index';
 
 
 describe('callbag-common', () => {
@@ -77,6 +77,34 @@ describe('callbag-common', () => {
       pipe(s, subscribe(v => r.push(v)));
 
       r.should.eql([42, 42]);
+    });
+  });
+
+  describe('startWith()', () => {
+    it('should start with given values.', () => {
+      const r1: number[] = [];
+
+      pipe(
+        of(1),
+        startWith(2, 3, 4),
+        take(2),
+        subscribe(v => r1.push(v))
+      );
+
+      r1.should.eql([2, 3]);
+
+      const r2: number[] = [];
+      const r3: number[] = [];
+      const sub = subject<number>();
+      const src = pipe(sub, startWith(1, 2, 3));
+
+      pipe(src, subscribe(v => r2.push(v)));
+      pipe(src, take(4), subscribe(v => r3.push(v)));
+
+      sub(1, 4);
+      sub(1, 5);
+      r2.should.eql([1, 2, 3, 4, 5]);
+      r3.should.eql([1, 2, 3, 4]);
     });
   });
 });
