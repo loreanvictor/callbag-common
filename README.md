@@ -36,9 +36,6 @@ npm i callbag-common
 - [filter](https://loreanvictor.github.io/callbag-common/operator/filter): Filters incoming values.
 - [take](https://loreanvictor.github.io/callbag-common/operator/take): Take a maximum number of values from source.
 - [startWith](https://loreanvictor.github.io/callbag-common/operator/start-with): Start with given values.
-
-&nbsp;
-
 - [scan](https://loreanvictor.github.io/callbag-common/operator/scan): Combine consecutive values from source.
 - [flatten](https://loreanvictor.github.io/callbag-common/operator/flatten): Flattens higher-order callbags.
 - [debounce](https://loreanvictor.github.io/callbag-common/operator/debounce): Debounces incoming values.
