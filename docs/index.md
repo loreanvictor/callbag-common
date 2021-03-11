@@ -88,9 +88,12 @@ pipe(
 
 - [map](/operator/map): Transforms incoming values.
 - [filter](/operator/filter): Filters incoming values.
+- [take](/operator/take): Take a maximum number of values from source.
+- [startWith](/operator/start-with): Start with given values.
+
+
 - [flatten](/operator/flatten): Flattens higher-order callbags.
 - [debounce](/operator/debounce): Debounces incoming values.
-- [take](/operator/take): Take a maximum number of values from source.
 - [scan](/operator/scan): Combine consecutive values from source.
 
 ### Comination

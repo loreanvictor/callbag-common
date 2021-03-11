@@ -14,9 +14,13 @@
 >
 > [map](/operator/map)
 > [filter](/operator/filter)
+> [take](/operator/take)
+> [startWith](/operator/start-with)
+>
+> ---
+>
 > [flatten](/operator/flatten)
 > [debounce](/operator/debounce)
-> [take](/operator/take)
 > [scan](/operator/scan)
 
 
