@@ -37,7 +37,7 @@ npm i callbag-common
 - [take](https://loreanvictor.github.io/callbag-common/operator/take): Take a maximum number of values from source.
 - [startWith](https://loreanvictor.github.io/callbag-common/operator/start-with): Start with given values.
 
-<br>
+&nbsp;
 
 - [scan](https://loreanvictor.github.io/callbag-common/operator/scan): Combine consecutive values from source.
 - [flatten](https://loreanvictor.github.io/callbag-common/operator/flatten): Flattens higher-order callbags.
