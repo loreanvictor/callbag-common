@@ -91,6 +91,7 @@ pipe(
 - [flatten](/operator/flatten): Flattens higher-order callbags.
 - [debounce](/operator/debounce): Debounces incoming values.
 - [take](/operator/take): Take a maximum number of values from source.
+- [scan](/operator/scan): Combine consecutive values from source.
 
 ### Comination
 
