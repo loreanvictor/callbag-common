@@ -1,7 +1,7 @@
 // tslint:disable: no-magic-numbers
 
 import { should } from 'chai'; should();
-import { pipe, map, of, filter, subscribe, tap, take } from '../index';
+import { pipe, map, of, filter, subscribe, tap, take, scan } from '../index';
 import { source } from '../maybe';
 
 
@@ -26,6 +26,16 @@ describe('callbag-common', () => {
     );
 
     r2.should.eql([3, 6]);
+
+    const r3: number[] = [];
+    pipe(
+      of(1, 2, 3, 4),
+      scan((t, x) => t + x, 0),
+      take(3),
+      subscribe(v => r3.push(v))
+    );
+
+    r3.should.eql([1, 3, 6]);
   });
 
   describe('tap()', () => {

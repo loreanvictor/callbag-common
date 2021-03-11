@@ -33,6 +33,7 @@ npm i callbag-common
 - [flatten](https://loreanvictor.github.io/callbag-common/operator/flatten): Flattens higher-order callbags.
 - [debounce](https://loreanvictor.github.io/callbag-common/operator/debounce): Debounces incoming values.
 - [take](https://loreanvictor.github.io/callbag-common/operator/take): Take a maximum number of values from source.
+- [scan](https://loreanvictor.github.io/callbag-common/operator/scan): Combine consecutive values from source.
 
 ### Comination
 

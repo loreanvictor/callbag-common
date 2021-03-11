@@ -13,6 +13,7 @@ import fromPromise from 'callbag-from-promise';
 import fromEvent from 'callbag-from-event';
 import of from 'callbag-of';
 import take from 'callbag-take';
+import scan from 'callbag-scan';
 
 import { debounce } from 'callbag-debounce';
 import { expr } from 'callbag-expr';
@@ -22,7 +23,7 @@ import { source } from './maybe';
 
 export {
   of, fromPromise, fromEvent, interval,
-  map, filter, take, flatten, debounce,
+  map, filter, take, flatten, debounce, scan,
   merge, combine, expr,
   pipe, tap, subscribe, source,
 };
