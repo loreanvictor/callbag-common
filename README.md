@@ -41,7 +41,7 @@ npm i callbag-common
 - [debounce](https://loreanvictor.github.io/callbag-common/operator/debounce): Debounces incoming values.
 
 
-### Comination
+### Combination
 
 - [expr](https://loreanvictor.github.io/callbag-common/combine/expr): Create expressions from other callbags.
 - [merge](https://loreanvictor.github.io/callbag-common/combine/merge): Merges given callbags, emitting when each one emits.
