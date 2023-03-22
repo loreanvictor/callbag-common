@@ -3,7 +3,7 @@
   <br><br>
   <h1>callbag-common</h1>
   
-  [![tests](https://img.shields.io/github/workflow/status/loreanvictor/callbag-common/Test?label=tests&logo=mocha&logoColor=green&style=flat-square)](https://github.com/loreanvictor/callbag-common/actions?query=workflow%3A%22Test%22)
+  [![tests](https://img.shields.io/github/actions/workflow/status/loreanvictor/callbag-common/test.yml?label=tests&logo=mocha&logoColor=green&style=flat-square)](https://github.com/loreanvictor/callbag-common/actions?query=workflow%3A%22Test%22)
 [![version](https://img.shields.io/npm/v/callbag-common?logo=npm&style=flat-square)](https://www.npmjs.com/package/callbag-common)
 [![docs](https://img.shields.io/badge/%20-docs-blue?logo=read%20the%20docs&logoColor=white&style=flat-square)](https://loreanvictor.github.io/callbag-common/)
 </div>
